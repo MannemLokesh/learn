@@ -1,0 +1,23 @@
+/src
+├── /assets           → Static assets (images, icons, etc.)
+├── /components       → Reusable UI components (buttons, cards, inputs, etc.)
+├── /features         → Feature-based folder structure (by module/page)
+│   └── /auth
+│       ├── Login.jsx
+│       ├── Register.jsx
+│       └── authService.js
+│   └── /dashboard
+│       ├── Dashboard.jsx
+│       └── dashboardService.js
+├── /hooks            → Custom React hooks (e.g., useAuth, useFetch)
+├── /layouts          → Page layouts (e.g., AdminLayout, AuthLayout)
+├── /pages            → Route-level components (mapped to URLs)
+├── /routes           → Route definitions with lazy loading & guards
+├── /services         → API services using axios/fetch
+│   └── apiClient.js  → Axios base config, interceptors
+├── /store            → State management (Context/Redux/ Zustand etc.)
+├── /utils            → Utility functions/helpers (e.g., dateFormat, validators)
+├── /constants        → Static constants (e.g., roles, endpoints, status codes)
+├── /config           → App-wide config (env variables, base URLs)
+├── /App.jsx
+├── /main.jsx
