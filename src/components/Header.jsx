@@ -1,6 +1,42 @@
+import { useState, useEffect, useRef } from "react";
+import { useNavigate } from 'react-router-dom';
+
+const categoryData = {
+  "Web Development": ["Html", "CSS", "Core Java", "JDBC"],
+  DevOps: ["Git", "Docker", "Jenkins"],
+};
+
 export default function Header() {
+  const [activeCategory, setActiveCategory] = useState(null);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const dropdownRef = useRef(null);
+  const navigate = useNavigate();
+
+
+  const handleCategoryClick = (category) => {
+    if (activeCategory === category) {
+      setActiveCategory(null);
+      setIsDropdownOpen(false);
+    } else {
+      setActiveCategory(category);
+      setIsDropdownOpen(true);
+    }
+  };
+
+  // Close dropdown on outside click
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsDropdownOpen(false);
+        setActiveCategory(null);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
   return (
-    <div className="bg-[#010d3c] grid md:grid-cols-2 gap-2 md:gap-4 sm:grid-cols-4 grid-cols-4">
+    <div className="bg-[#010d3c] grid md:grid-cols-2 gap-2 md:gap-4 sm:grid-cols-4 grid-cols-4 relative z-50">
       <div className="grid grid-cols-1 col-span-1 md:grid-cols-2 sm:grid-cols-1 sm:col-span-1">
         <div>
           <a href="/">
@@ -16,9 +52,19 @@ export default function Header() {
             />
           </a>
         </div>
-        <div className="hidden md:flex">
-          <button className="flex items-center space-x-2 px-4 py-2 text-white bg-[#010d3c] rounded">
-            {/* Grid Icon */}
+
+        <div className="hidden md:flex relative" ref={dropdownRef}>
+          <button
+            className="flex items-center space-x-2 px-4 py-2 text-white bg-[#010d3c] rounded hover:text-green-500"
+            onClick={() =>
+              setIsDropdownOpen((prev) => {
+                if (prev) {
+                  setActiveCategory(null);
+                }
+                return !prev;
+              })
+            }
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="16"
@@ -29,8 +75,6 @@ export default function Header() {
             >
               <path d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5zM2.5 2a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5zm6.5.5A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 5.5zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5zM1 10.5A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5zm6.5.5A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 13.5zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5z" />
             </svg>
-
-            {/* Text + Dropdown Icon */}
             <span className="flex items-center space-x-1">
               <span>Category</span>
               <svg
@@ -50,22 +94,73 @@ export default function Header() {
               </svg>
             </span>
           </button>
+
+          {/* Dropdown Container */}
+          {isDropdownOpen && (
+            <div className="absolute top-full left-0 mt-2 bg-[#010d3c] text-white rounded shadow-md z-50 w-64 border-8 border-[#010d3c]">
+              {Object.entries(categoryData).map(([category, topics]) => (
+                <div
+                  key={category}
+                  className="relative cursor-pointer"
+                  onClick={() => handleCategoryClick(category)}
+                >
+                  <div className="p-2 font-medium hover:bg-white hover:text-[#010d3c] flex justify-between items-center">
+                    <span>{category}</span>
+                    <svg
+                      className={`w-4 h-4 ml-1 transform transition-transform duration-200 ${
+                        activeCategory === category ? "rotate-90" : ""
+                      }`}
+                      aria-hidden="true"
+                      focusable="false"
+                      data-prefix="fas"
+                      data-icon="angle-right"
+                      role="img"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 320 512"
+                    >
+                      <path
+                        fill="currentColor"
+                        d="M278.6 256l-11.3 11.3-160 160L96 438.6 73.4 416l11.3-11.3L233.4 256 84.7 107.3 73.4 96 96 73.4l11.3 11.3 160 160L278.6 256z"
+                      />
+                    </svg>
+                  </div>
+
+                  {/* Submenu */}
+                  {activeCategory === category && (
+                    <div className="absolute left-full ml-2 top-0 w-52 bg-[#010d3c] border rounded-md shadow-lg p-4">
+                      {topics.map((topic) => (
+                        <div
+                          key={topic}
+                          className="px-3 py-1 text-sm hover:bg-white hover:text-[#010d3c] cursor-pointer"
+                          onClick={() => navigate(`/tutorial/${encodeURIComponent(topic)}`)}
+                        >
+                          {topic}
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       </div>
+
+      {/* Search */}
       <div className="flex items-center justify-center sm:grid-cols-1 sm:col-span-3  col-span-3 md:col-span-1">
         <div className="relative w-full max-w px-2 mx-auto">
           <input
             type="text"
-            className="w-full pl-10 pr-4 py-2 border text-xs md:text-base text-white border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full pl-10 pr-4 py-2 border text-xs md:text-base text-white border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 hover:border-green-500"
             placeholder="Search your favourite tutorials ..."
             id="search-strings"
             name="key"
             aria-label="Search"
             autoComplete="off"
           />
-          <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+          <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none ">
             <svg
-              className="w-5 h-5 text-white"
+              className="w-5 h-5 text-white "
               fill="none"
               stroke="currentColor"
               strokeWidth="2"
