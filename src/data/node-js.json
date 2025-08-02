@@ -1,0 +1,41 @@
+{
+  "id": "nodejs",
+  "name": "Node.js Backend",
+  "description": "Server-side JavaScript with Node.js",
+  "color": "from-emerald-500 to-emerald-600",
+  "topics": [
+    {
+      "id": "nodejs-intro",
+      "title": "Introduction to Node.js",
+      "description": "Node.js is a JavaScript runtime built on Chrome's V8 JavaScript engine that allows you to run JavaScript on the server side. It uses an event-driven, non-blocking I/O model that makes it lightweight and efficient. Node.js is perfect for building scalable network applications and has a rich ecosystem of packages available through npm.",
+      "links": {
+        "html": "html file link",
+        "pdf": "pdf file link",
+        "docs": "docs file link"
+      },
+      "githubUrl": "https://github.com/example/nodejs-intro"
+    },
+    {
+      "id": "express-framework",
+      "title": "Express.js Framework",
+      "description": "Express.js is a minimal and flexible Node.js web application framework that provides a robust set of features for web and mobile applications. It facilitates rapid development of Node.js based web applications and provides a thin layer of fundamental web application features, without obscuring Node.js features.",
+      "links": {
+        "html": "html file link",
+        "pdf": "pdf file link",
+        "docs": "docs file link"
+      },
+      "githubUrl": "https://github.com/example/express-examples"
+    },
+    {
+      "id": "database-integration",
+      "title": "Database Integration",
+      "description": "Learn how to integrate various databases with Node.js applications. Explore both SQL databases like PostgreSQL and MySQL, as well as NoSQL databases like MongoDB. Understand database connection patterns, query optimization, and best practices for data modeling and management in Node.js applications.",
+      "links": {
+        "html": "html file link",
+        "pdf": "pdf file link",
+        "docs": "docs file link"
+      },
+      "githubUrl": "https://github.com/example/nodejs-database"
+    }
+  ]
+}

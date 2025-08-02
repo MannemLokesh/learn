@@ -1,0 +1,41 @@
+{
+  "id": "java",
+  "name": "Core Java",
+  "description": "Master the fundamentals of Java programming",
+  "color": "from-blue-500 to-blue-600",
+  "topics": [
+    {
+      "id": "what-is-java",
+      "title": "What is Java?",
+      "description": "Java is a programming language and a platform. Java is a high level, robust, object-oriented and secure programming language. Java was developed by Sun Microsystems (which is now the subsidiary of Oracle) in the year 1995. James Gosling is known as the father of Java. Before Java, its name was Oak. Since Oak was already a registered company, so James Gosling and his team changed the name from Oak to Java. Java is known for its \"write once, run anywhere\" philosophy, making it platform-independent and highly portable.",
+      "links": {
+        "html": "html file link",
+        "pdf": "pdf file link",
+        "docs": "docs file link"
+      },
+      "githubUrl": "https://github.com/example/java-basics"
+    },
+    {
+      "id": "java-syntax",
+      "title": "Java Syntax & Structure",
+      "description": "Understanding the basic syntax and structure of Java programs is crucial for any developer. This includes learning about classes, methods, variables, data types, and the overall organization of Java code. We will explore how Java code is structured, the importance of proper naming conventions, and how to write clean, maintainable code that follows Java best practices.",
+      "links": {
+        "html": "html file link",
+        "pdf": "pdf file link",
+        "docs": "docs file link"
+      },
+      "githubUrl": "https://github.com/example/java-syntax"
+    },
+    {
+      "id": "oop-concepts",
+      "title": "Object-Oriented Programming",
+      "description": "Object-Oriented Programming (OOP) is a fundamental paradigm in Java that allows developers to create modular, reusable, and maintainable code. Learn about the four pillars of OOP: Encapsulation, Inheritance, Polymorphism, and Abstraction. Understanding these concepts is essential for writing effective Java applications and designing robust software architectures.",
+      "links": {
+        "html": "html file link",
+        "pdf": "pdf file link",
+        "docs": "docs file link"
+      },
+      "githubUrl": "https://github.com/example/java-oop"
+    }
+  ]
+}
