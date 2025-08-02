@@ -67,7 +67,7 @@ function App() {
         </header>
 
         {/* Main content */}
-        <main className="container mx-auto px-4 ">
+        <main className="container mx-auto px-4 pt-8">
           {/* Hero section */}
           <div className="mb-12 text-center">
             <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-r from-blue-500 to-purple-600 shadow-lg">
@@ -107,10 +107,10 @@ function App() {
 
           {/* Footer */}
           <footer className={`
-            border-t py-4 text-center transition-colors duration-300
+            py-4 text-center transition-colors duration-300
             ${isDark ? 'border-gray-700 text-gray-400' : 'border-gray-200 text-gray-600'}
           `}>
-            <p>© 2024 Deeplylearn Academy.</p>
+            <p>© 2025 Deeplylearn Academy.</p>
           </footer>
         </main>
       </div>
