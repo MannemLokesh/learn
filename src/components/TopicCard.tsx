@@ -46,7 +46,7 @@ const handleOpenSelectedLink = () => {
             : 'text-gray-600 scrollbar-thumb-gray-400 scrollbar-track-gray-200'
           }
         `}>
-          <p className="text-sm leading-relaxed" style="text-align: justify;">
+          <p className="text-sm leading-relaxed" style={{ textAlign: "justify" }}>
             {topic.description}
           </p>
         </div>
